@@ -1,0 +1,23 @@
+{
+  "skill_name": "doc-restructure",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我有一份13章的投标方案文档，需要按照评审要求重组为4章结构。评审要求.md里有4个章节的分值和要素。帮我把原文档的内容按评审要求重新组织，图表编号要连续，标题编号要正确。",
+      "expected_output": "生成mapping.json，执行restructure/renumber/fix-headings/verify，输出一个4章结构的docx，图表和标题编号连续正确",
+      "files": ["input.docx", "评审要求.md"]
+    },
+    {
+      "id": 2,
+      "prompt": "帮我检查一下这个重构后的文档有没有问题，主要是图表有没有丢失，编号是不是连续的。",
+      "expected_output": "运行verify命令，输出表注与表格对应检查、图表编号连续性检查、标题编号连续性检查的结果",
+      "files": ["output.docx"]
+    },
+    {
+      "id": 3,
+      "prompt": "这个文档的图注和表注编号都乱了，帮我按章节重新编号，图1-1、图1-2这样连续下去，表也一样。",
+      "expected_output": "运行renumber命令，按章节连续编号所有图表，修正正文中的引用",
+      "files": ["doc.docx"]
+    }
+  ]
+}
